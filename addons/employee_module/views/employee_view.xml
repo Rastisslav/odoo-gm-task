@@ -1,0 +1,30 @@
+<!-- employee_view.xml -->
+
+<odoo>
+    <data>
+        <!-- Modify the existing view -->
+        <record id="view_employee_form_inherit" model="ir.ui.view">
+            <field name="name">hr.employee.form.inherit</field>
+            <field name="model">hr.employee</field>
+            <field name="inherit_id" ref="hr.view_employee_form"/>
+            <field name="arch" type="xml">
+                <data>
+                    <!-- Place i_love_gb after the email field -->
+                    <field name="work_email" position="after">
+                        <field name="i_love_gb"/>
+                    </field>
+                    <!-- Add salary, tax, and total_salary fields after the address field in the Private Information tab -->
+                    <xpath expr="//page[@name='personal_information']" position="inside">
+                        <group name="Private Contact">
+                            
+                                <field name="salary"/>
+                                <field name="tax"/>
+                                <field name="total_salary"/>
+                           
+                        </group>
+                    </xpath>
+                </data>
+            </field>
+        </record>
+    </data>
+</odoo>
