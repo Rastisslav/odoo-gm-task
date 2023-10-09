@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="view_job_application_form" model="ir.ui.view">
+            <field name="name">job.application.form</field>
+            <field name="model">job.application</field>
+            <field name="arch" type="xml">
+                <form string="Job Application Form">
+                    <group>
+                        <field name="name" required="1"/>
+                        <field name="email" required="1"/>
+                        <field name="phone"/>
+                        <field name="introduction"/>
+                        <field name="cv" widget="binary"/>
+                    </group>
+                    <footer>
+                        <button name="send_application" string="Send CV" type="object" class="oe_highlight"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+        <record id="action_job_application_form" model="ir.actions.act_window">
+            <field name="name">Job Application Form</field>
+            <field name="res_model">job.application</field>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="view_job_application_form"/>
+        </record>
+    </data>
+</odoo>

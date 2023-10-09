@@ -12,12 +12,12 @@
                 <xpath expr="//button[@name='129']" position="after">
                     <button name="send_emails" string="Send Emails" type="object" class="oe_highlight"/>
                 </xpath>
-                    <!-- Place i_love_gb after the email field -->
+                   
                     <field name="work_email" position="after">
                         <field name="i_love_gb"/>
                         <field name="employee_contacts" attrs="{'invisible': [('i_love_gb', '=', False)]}" />
                     </field>
-                    <!-- Add salary, tax, and total_salary fields after the address field in the Private Information tab -->
+               
                     <xpath expr="//page[@name='personal_information']/group/group/field[@name='address_home_id']" position="after">
                         <field name="salary"/>
                         <field name="tax"/>
