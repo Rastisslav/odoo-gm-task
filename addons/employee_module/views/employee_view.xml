@@ -2,27 +2,31 @@
 
 <odoo>
     <data>
-        <!-- Modify the existing view -->
+       
         <record id="view_employee_form_inherit" model="ir.ui.view">
             <field name="name">hr.employee.form.inherit</field>
             <field name="model">hr.employee</field>
             <field name="inherit_id" ref="hr.view_employee_form"/>
             <field name="arch" type="xml">
                 <data>
+                <xpath expr="//button[@name='129']" position="after">
+                    <button name="send_emails" string="Send Emails" type="object" class="oe_highlight"/>
+                </xpath>
                     <!-- Place i_love_gb after the email field -->
                     <field name="work_email" position="after">
                         <field name="i_love_gb"/>
+                        <field name="employee_contacts" attrs="{'invisible': [('i_love_gb', '=', False)]}" />
                     </field>
                     <!-- Add salary, tax, and total_salary fields after the address field in the Private Information tab -->
-                    <xpath expr="//page[@name='personal_information']" position="inside">
-                        <group name="Private Contact">
-                            
-                                <field name="salary"/>
-                                <field name="tax"/>
-                                <field name="total_salary"/>
-                           
-                        </group>
+                    <xpath expr="//page[@name='personal_information']/group/group/field[@name='address_home_id']" position="after">
+                        <field name="salary"/>
+                        <field name="tax"/>
+                        <field name="total_salary"/>                                          
                     </xpath>
+
+                    <field name="phone" position="replace">
+                            <field name="special_phone" string="Work Phone" default="0901123456"/>
+                    </field>
                 </data>
             </field>
         </record>
